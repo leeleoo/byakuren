@@ -156,7 +156,8 @@ void _bkr_octree_reduce(uint32_t* leaf_count,
 
     int r = 0, g = 0, b = 0;
     int count = 0;
-    for(int i = 0; i < 8; i++)
+    int i;
+    for(i = 0; i < 8; i++)
     {
         if(!node->children[i]) continue;
         r     += node->children[i]->red_components;
@@ -186,7 +187,8 @@ void _bkr_octree_reduce(uint32_t* leaf_count,
 void bkr_release_octree(bkr_octree_node* node)
 {
     // release this node's each children
-    for(int i = 0; i < 8; i++)
+    int i;
+    for(i = 0; i < 8; i++)
     {
         if(node->children[i]) bkr_release_octree(node->children[i]);
     }
@@ -230,9 +232,10 @@ bkr_octree_node* bkr_build_octree(bkr_rgb* pixels, uint32_t pixel_count, uint32_
     bkr_octree_reducible_list_node* _reducible_list[7];
 
     // 妈蛋，之前这句没写褚 bug 了！
-    for(int i = 0; i < 7; i++) _reducible_list[i] = 0;
-
-    for(uint32_t i = 0; i < pixel_count; i++)
+    int i_;
+    for(i_ = 0; i_ < 7; i_++) _reducible_list[i_] = 0;
+    uint32_t i;
+    for(i = 0; i < pixel_count; i++)
     {
         // for each pixel, we add this color to this octree
         // via function `_bkr_octree_add_color` with
@@ -275,7 +278,8 @@ int bkr_octree_calculate_color_stats(bkr_octree_node* node, bkr_color_stats stat
     }
 
     int _count = 0;
-    for(int i = 0; i < 8; i++)
+    int i;
+    for(i = 0; i < 8; i++)
     {
         if(NULL != node->children[i])
         {

@@ -73,7 +73,8 @@ static inline int _bkr_true_mix_calculate(bkr_color_stats octree_stats[], uint32
 {
     int32_t index;
     _bkr_palette_stats* current_palette;
-    for(uint32_t i = 0; i < octree_stats_count; i++)
+    uint32_t i;
+    for(i = 0; i < octree_stats_count; i++)
     {
         // get current palette and the neareast one
         // color.
@@ -85,19 +86,21 @@ static inline int _bkr_true_mix_calculate(bkr_color_stats octree_stats[], uint32
 
     // get answer!
     int answer_count = 0;
-    for(uint32_t i = 0; i < colored_count; i++)
+    uint32_t i_;
+    for(i_ = 0; i_ < colored_count; i_++)
     {
-        if(!colored[i].count) continue;
-        memcpy(&stats[answer_count].color, (colored[i].color), bkr_rgb_size);
-        stats[answer_count].value   = BKR_RGB_TO_INT32(colored[i].color->red, colored[i].color->green, colored[i].color->blue);
-        stats[answer_count++].count = colored[i].count;
+        if(!colored[i_].count) continue;
+        memcpy(&stats[answer_count].color, (colored[i_].color), bkr_rgb_size);
+        stats[answer_count].value   = BKR_RGB_TO_INT32(colored[i_].color->red, colored[i_].color->green, colored[i_].color->blue);
+        stats[answer_count++].count = colored[i_].count;
     }
-    for(uint32_t i = 0; i < grayed_count; i++)
+    uint32_t i1;
+    for(i1 = 0; i1 < grayed_count; i1++)
     {
-        if(!grayed[i].count) continue;
-        memcpy(&stats[answer_count].color, (grayed[i].color), bkr_rgb_size);
-        stats[answer_count].value   = BKR_RGB_TO_INT32(grayed[i].color->red, grayed[i].color->green, grayed[i].color->blue);
-        stats[answer_count++].count = grayed[i].count;
+        if(!grayed[i1].count) continue;
+        memcpy(&stats[answer_count].color, (grayed[i1].color), bkr_rgb_size);
+        stats[answer_count].value   = BKR_RGB_TO_INT32(grayed[i1].color->red, grayed[i1].color->green, grayed[i1].color->blue);
+        stats[answer_count++].count = grayed[i1].count;
     }
 
     // sort for answer
