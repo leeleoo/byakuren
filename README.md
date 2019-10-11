@@ -1,5 +1,41 @@
 # Byakuren
+上古服务器不支持 c99 升级风险太高于是改语法
+```$xslt
+../deps/byakuren/lib/mindiff.c: 在函数‘_bkr_find_mindiff’中:
+../deps/byakuren/lib/mindiff.c:75:5: 错误：只允许在 C99 模式下使用‘for’循环初始化声明
+     for(uint32_t i = 0; i < palette_count; i++)
+     ^
+../deps/byakuren/lib/mindiff.c:75:5: 附注：使用 -std=c99 或 -std=gnu99 来编译您的代码
+../deps/byakuren/lib/mindiff.c: 在函数‘_bkr_mindiff_calc’中:
+../deps/byakuren/lib/mindiff.c:94:5: 错误：只允许在 C99 模式下使用‘for’循环初始化声明
+     for(uint32_t i = 0; i < pixel_count; i++)
+     ^
+../deps/byakuren/lib/mindiff.c:105:18: 错误：‘i’重定义
+     for(uint32_t i = 0; i < colored_count; i++)
+                  ^
+../deps/byakuren/lib/mindiff.c:94:18: 附注：‘i’的上一个定义在此
+     for(uint32_t i = 0; i < pixel_count; i++)
+                  ^
+../deps/byakuren/lib/mindiff.c:105:5: 错误：只允许在 C99 模式下使用‘for’循环初始化声明
+     for(uint32_t i = 0; i < colored_count; i++)
+     ^
+../deps/byakuren/lib/mindiff.c:112:18: 错误：‘i’重定义
+     for(uint32_t i = 0; i < grayed_count; i++)
+                  ^
+../deps/byakuren/lib/mindiff.c:105:18: 附注：‘i’的上一个定义在此
+     for(uint32_t i = 0; i < colored_count; i++)
+                  ^
+../deps/byakuren/lib/mindiff.c:112:5: 错误：只允许在 C99 模式下使用‘for’循环初始化声明
+     for(uint32_t i = 0; i < grayed_count; i++)
+     ^
+../deps/byakuren/lib/mindiff.c: 在函数‘_bkr_generate_colored_and_gray_pelette’中:
+../deps/byakuren/lib/mindiff.c:152:9: 错误：只允许在 C99 模式下使用‘for’循环初始化声明
+         for(uint32_t i = 0; i < palette->count; i++)
+         ^
+../deps/byakuren/lib/mindiff.c:165:9: 错误：只允许在 C99 模式下使用‘for’循环初始化声明
+         for(uint32_t i = 0; i < palette->count; i++)
 
+```
 A theme color extracting library implemented by C.
 
 > This library is used in a related company for years.
