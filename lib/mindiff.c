@@ -103,21 +103,21 @@ static inline int _bkr_mindiff_calc(bkr_rgb* pixels, uint32_t pixel_count, int16
 
     // get answer!
     int answer_count = 0;
-    uint32_t i;
-    for(i = 0; i < colored_count; i++)
+    uint32_t _i;
+    for(_i = 0; _i < colored_count; _i++)
     {
-        if(!colored[i].count) continue;
-        memcpy(&stats[answer_count].color, (colored[i].color), bkr_rgb_size);
-        stats[answer_count].value   = BKR_RGB_TO_INT32(colored[i].color->red, colored[i].color->green, colored[i].color->blue);
-        stats[answer_count++].count = colored[i].count;
+        if(!colored[_i].count) continue;
+        memcpy(&stats[answer_count].color, (colored[_i].color), bkr_rgb_size);
+        stats[answer_count].value   = BKR_RGB_TO_INT32(colored[_i].color->red, colored[_i].color->green, colored[_i].color->blue);
+        stats[answer_count++].count = colored[_i].count;
     }
-    uint32_t i;
-    for(i = 0; i < grayed_count; i++)
+    uint32_t i1;
+    for(i1 = 0; i1 < grayed_count; i1++)
     {
-        if(!grayed[i].count) continue;
-        memcpy(&stats[answer_count].color, (grayed[i].color), bkr_rgb_size);
-        stats[answer_count].value   = BKR_RGB_TO_INT32(grayed[i].color->red, grayed[i].color->green, grayed[i].color->blue);
-        stats[answer_count++].count = grayed[i].count;
+        if(!grayed[i1].count) continue;
+        memcpy(&stats[answer_count].color, (grayed[i1].color), bkr_rgb_size);
+        stats[answer_count].value   = BKR_RGB_TO_INT32(grayed[i1].color->red, grayed[i1].color->green, grayed[i1].color->blue);
+        stats[answer_count++].count = grayed[i1].count;
     }
 
     // sort for answer
